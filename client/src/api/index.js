@@ -1,5 +1,5 @@
 import axios from 'axios';
-const API = axios.create({baseURL: 'http://localhost:3000' })
+const API = axios.create({baseURL: 'https://memoriees.herokuapp.com' });
 
 API.interceptors.request.use((req)=>{
     if(localStorage.getItem('profile')) {
@@ -7,6 +7,7 @@ API.interceptors.request.use((req)=>{
     }
     return req;
 });
+
 export const fetchPosts = () => API.get('/posts');
 export const createPost = (newPost) => API.post('/posts', newPost);
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
